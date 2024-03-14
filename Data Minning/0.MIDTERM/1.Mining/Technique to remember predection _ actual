@@ -1,0 +1,7 @@
+Technique to remember prediction & actual 
+========================================
+prediction | patient     | definition      | indicator
+cancer       cancer        true positive
+no cancer    no cancer     true negative
+cancer       no cancer     false positive  | precision,  
+no cancer    cancer        false negative  | recall 
