@@ -1,0 +1,25 @@
+Data Mining Pre-exam
+1. Data processing and cleansing
+   data missing
+   data duplication
+   data conversion
+   pythonscript 
+   domain matching
+   feature creation
+
+2. Data Visualization
+   Boxplot and Scatter plot with T-Test, Annova Table, etc.
+3. Regression Problem
+   Test and Train data
+   Linear Regression
+   Polynomial Regression
+   Polynomial Regression with Linear Regularization
+4. Classification Problem
+   classification with different methods
+   - Decision Tree
+   - SVM
+   - Random Forrest
+   - Neural Network
+   - Naive Bay
+   - Confusion Matrix
+   - ROC plot 

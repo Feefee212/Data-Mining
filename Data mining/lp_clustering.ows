@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="CSV File Import" qualified_name="Orange.widgets.data.owcsvimport.OWCSVFileImport" project_name="Orange3" version="" title="CSV File Import" position="(93.0, 184.0)" />
+		<node id="1" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Python Script (1)" position="(104.0, 339.0)" />
+		<node id="2" name="Select Columns" qualified_name="Orange.widgets.data.owselectcolumns.OWSelectAttributes" project_name="Orange3" version="" title="Select Columns (1)" position="(215.0, 338.0)" />
+		<node id="3" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table (1)" position="(473.0, 196.0)" />
+		<node id="4" name="Distances" qualified_name="Orange.widgets.unsupervised.owdistances.OWDistances" project_name="Orange3" version="" title="Distances" position="(314.0, 342.0)" />
+		<node id="5" name="Hierarchical Clustering" qualified_name="Orange.widgets.unsupervised.owhierarchicalclustering.OWHierarchicalClustering" project_name="Orange3" version="" title="Hierarchical Clustering" position="(431.0, 339.0)" />
+		<node id="6" name="Geocoding" qualified_name="orangecontrib.geo.widgets.owgeocoding.OWGeocoding" project_name="Orange3-Geo" version="" title="Geocoding" position="(561.0, 345.0)" />
+		<node id="7" name="Geo Map" qualified_name="orangecontrib.geo.widgets.owmap.OWMap" project_name="Orange3-Geo" version="" title="Geo Map" position="(685.0, 347.0)" />
+		<node id="8" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table" position="(67.0, 114.0)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="1" source_node_id="1" sink_node_id="2" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="2" source_node_id="2" sink_node_id="4" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="3" source_node_id="4" sink_node_id="5" source_channel="Distances" sink_channel="Distances" enabled="true" />
+		<link id="4" source_node_id="5" sink_node_id="3" source_channel="Selected Data" sink_channel="Data" enabled="true" />
+		<link id="5" source_node_id="5" sink_node_id="6" source_channel="Selected Data" sink_channel="Data" enabled="true" />
+		<link id="6" source_node_id="6" sink_node_id="7" source_channel="Coded Data" sink_channel="Data" enabled="true" />
+	</links>
+	<annotations>
+		<text id="0" type="text/plain" rect="(220.0, 33.0, 305.0, 69.0)" font-family=".AppleSystemUIFont" font-size="16">Clustering group of deliveries</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'_session_items': [], '_session_items_v2': [({'type': 'AbsPath', 'path': '/Users/mix/Documents/data11.csv'}, {'encoding': 'utf-8', 'delimiter': ',', 'quotechar': '"', 'doublequote': True, 'skipinitialspace': True, 'quoting': 0, 'columntypes': [{'start': 0, 'stop': 1, 'value': 'Numeric'}, {'start': 1, 'stop': 4, 'value': 'Categorical'}, {'start': 4, 'stop': 5, 'value': 'Numeric'}], 'rowspec': [{'start': 0, 'stop': 1, 'value': 'Header'}], 'decimal_separator': '.', 'group_separator': ''})], 'compatibility_mode': False, 'controlAreaVisible': True, 'dialog_state': {'directory': '/Users/mix/Documents', 'filter': 'Text - comma separated (*.csv, *)'}, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01\xd3\x00\x00\x00\xc6\x00\x00\x03\x1f\x00\x00\x02=\x00\x00\x01\xd3\x00\x00\x00\xe2\x00\x00\x03\x18\x00\x00\x02=\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x01\xd3\x00\x00\x00\xe2\x00\x00\x03\x1f\x00\x00\x02=', '__version__': 3}</properties>
+		<properties node_id="1" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 5, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'scriptLibrary': [{'name': 'scrape1', 'script': 'browser = webdriver.Chrome(ChromeDriverManager().install())\n\n#2 define endpoint\nurl = "https://pantip.com/topic/41611639"\n \nbrowser.get(url)\n\n#3. get body element\n\nbody = browser.find_element(By.TAG_NAME,"body")\n\n#4. dynamically score pages\nno_of_pagedowns = 20\n\nwhile no_of_pagedowns:\n    body.send_keys(Keys.PAGE_DOWN)  \n    time.sleep(self.wait)\n    no_of_pagedowns -=1\n\n\n#5. click on all &lt;a class="see-more"&gt;\natags = browser.find_elements(By.CSS_SELECTOR,"a[class = \'see-more\']")\n   \nfor atag in atags:\n    time.sleep(0.5)\n    atag.click()\n\n#6. get page source from webbrowser\n    time.sleep(1)\npage_source = browser.page_source\n\n#7. parse source\ns = BeautifulSoup(page_source,"html.parser")\n\n#8. find all post tag\n\nMyli=s.find_all(\'div\',attrs={\'class\':\'display-post-status-leftside\'})\n\n\n#9. works with each item\nfor num in range(len(Myli)):\n    row={} #make object as dict\n\n    #9.1 comment\n    commentNo           =   Myli[num].find(\'span\',attrs={\'class\':\'display-post-number\'})\n\n    if commentNo is None:\n        continue\n\n    row[\'comment_no\']   =   commentNo.get_text().strip()\n    row[\'post_id\']      =   postId\n    #9.2  \n    ttime               = Myli[num].find(\'abbr\',attrs={\'class\':\'timeago\'})\n    if ttime is not None:\n    row[\'created\']      = ttime[\'data-utime\']\n\n    #8.3  \n    comment             = Myli[num].find(\'div\',attrs={\'class\':\'display-post-story\'})\n    row[\'comment\']      = comment.get_text()\n\n    list1.append(row)\n\n    df=pd.DataFrame(list1)\n\ntable1 = table_from_frame(df)\n', 'filename': None}, {'name': 'industry_sum.py', 'script': 'browser = webdriver.Chrome(ChromeDriverManager().install())\n\n#2 define endpoint\nurl = "https://pantip.com/topic/41611639"\n \nbrowser.get(url)\n\n#3. get body element\n\nbody = browser.find_element(By.TAG_NAME,"body")\n\n#4. dynamically score pages\nno_of_pagedowns = 20\n\nwhile no_of_pagedowns:\n    body.send_keys(Keys.PAGE_DOWN)  \n    time.sleep(self.wait)\n    no_of_pagedowns -=1\n\n\n#5. click on all &lt;a class="see-more"&gt;\natags = browser.find_elements(By.CSS_SELECTOR,"a[class = \'see-more\']")\n   \nfor atag in atags:\n    time.sleep(0.5)\n    atag.click()\n\n#6. get page source from webbrowser\n    time.sleep(1)\npage_source = browser.page_source\n\n#7. parse source\ns = BeautifulSoup(page_source,"html.parser")\n\n#8. find all post tag\n\nMyli=s.find_all(\'div\',attrs={\'class\':\'display-post-status-leftside\'})\n\n\n#9. works with each item\nfor num in range(len(Myli)):\n    row={} #make object as dict\n\n    #9.1 comment\n    commentNo           =   Myli[num].find(\'span\',attrs={\'class\':\'display-post-number\'})\n\n    if commentNo is None:\n        continue\n\n    row[\'comment_no\']   =   commentNo.get_text().strip()\n    row[\'post_id\']      =   postId\n    #9.2  \n    ttime               = Myli[num].find(\'abbr\',attrs={\'class\':\'timeago\'})\n    if ttime is not None:\n    row[\'created\']      = ttime[\'data-utime\']\n\n    #8.3  \n    comment             = Myli[num].find(\'div\',attrs={\'class\':\'display-post-story\'})\n    row[\'comment\']      = comment.get_text()\n\n    list1.append(row)\n\n    df=pd.DataFrame(list1)\n\ntable1 = table_from_frame(df)\n', 'filename': None}, {'name': 'iso.py', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': '/Users/mac/work/school/2022-1/dmine/data mining material/python/iso.py'}, {'name': 'project_opt.py', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport numpy as np\ndf= table_to_frame(in_data)\nprint(df['BUSINESS DEV'])\n#dfc = df.copy()\nOBJ = ['SUSTAINABILITY', 'BUSINESS DEV', 'HSE', 'DIGITAL TRANSFORMATION',\n       'CSR', 'OPERATIONAL EXCELLENCE']\n\nfor COL in OBJ:\n    df[COL] = df['TOTAL']*df[COL].cat.codes\ndf = pd.DataFrame(df[OBJ].sum(axis = 0)/1E6)\n \ndf.reset_index(inplace=True)\ndf.columns = ['MO','BUDGET']\nprint(df.head())\n#here you go\nout_data = table_from_frame(df)\n", 'filename': None}, {'name': 'shortest_route', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport numpy as np\ndf= table_to_frame(in_data)\nprint(df['BUSINESS DEV'])\n#dfc = df.copy()\nOBJ = ['SUSTAINABILITY', 'BUSINESS DEV', 'HSE', 'DIGITAL TRANSFORMATION',\n       'CSR', 'OPERATIONAL EXCELLENCE']\n\nfor COL in OBJ:\n    df[COL] = df['TOTAL']*df[COL].cat.codes\ndf = pd.DataFrame(df[OBJ].sum(axis = 0)/1E6)\n \ndf.reset_index(inplace=True)\ndf.columns = ['MO','BUDGET']\nprint(df.head())\n#here you go\nout_data = table_from_frame(df)\n", 'filename': None}, {'name': 'New script', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport numpy as np\ndf= table_to_frame(in_data)\nprint(df['BUSINESS DEV'])\n#dfc = df.copy()\nOBJ = ['SUSTAINABILITY', 'BUSINESS DEV', 'HSE', 'DIGITAL TRANSFORMATION',\n       'CSR', 'OPERATIONAL EXCELLENCE']\n\nfor COL in OBJ:\n    df[COL] = df['TOTAL']*df[COL].cat.codes\ndf = pd.DataFrame(df[OBJ].sum(axis = 0)/1E6)\n \ndf.reset_index(inplace=True)\ndf.columns = ['MO','BUDGET']\nprint(df.head())\n#here you go\nout_data = table_from_frame(df)\n", 'filename': None}], 'scriptText': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport numpy as np\n\ndf= table_to_frame(in_data)\n\ndf[['lat','lon']]=df['gps'].str.split(',', expand=True)\n\ndf2 = df[['lat','lon']].astype(float)\ndf2['name'] = df['name']\n\n\n#here you go\nout_data = table_from_frame(df2)\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xab\x00\x00\x00k\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="2" format="pickle">gASVqAEAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNpZ25v
+cmVfbmV3X2ZlYXR1cmVzlImME3NhdmVkV2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAAAAAAAZ
+AAAFnwAAA1EAAAAAAAAALQAABZ8AAAOwAAAAAAIAAAAFoAAAAAAAAAA1AAAFnwAAA1GUjBJ1c2Vf
+aW5wdXRfZmVhdHVyZXOUiYwLX192ZXJzaW9uX1+USwGMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9y
+YW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMEWRvbWFp
+bl9yb2xlX2hpbnRzlH2UKIwDbG9ulEsChpSMCWF0dHJpYnV0ZZRLAIaUjANsYXSUSwKGlGgVSwGG
+lIwEbmFtZZRLAYaUjARtZXRhlEsAhpR1Sv7///+GlGgHSwF1jAphdHRyaWJ1dGVzlH2UKIwDbGF0
+lEsCjANsb26USwKMBG5hbWWUSwF1jAVtZXRhc5R9lHViYXUu
+</properties>
+		<properties node_id="3" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x005\x00\x00\x04\xff\x00\x00\x03\x1f\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'select_rows': True, 'selected_cols': [], 'selected_rows': [], 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+		<properties node_id="4" format="literal">{'autocommit': True, 'axis': 0, 'controlAreaVisible': True, 'metric_idx': 0, 'normalized_dist': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x02\x02\x00\x00\x00\xfe\x00\x00\x02\xe9\x00\x00\x02\x05\x00\x00\x02\x02\x00\x00\x01\x1a\x00\x00\x02\xe9\x00\x00\x02\x05\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x02\x02\x00\x00\x01\x1a\x00\x00\x02\xe9\x00\x00\x02\x05', '__version__': 3}</properties>
+		<properties node_id="5" format="pickle">gASVVgIAAAAAAAB9lCiMF2Fubm90YXRpb25faWZfZW51bWVyYXRllIwLRW51bWVyYXRpb26UjBNh
+bm5vdGF0aW9uX2lmX25hbWVzlIwETmFtZZSMCmF1dG9jb21taXSUiIwSY29udHJvbEFyZWFWaXNp
+YmxllIiMCWN1dF9yYXRpb5RHQFLAAAAAAACMB2xpbmthZ2WUSwGMCW1heF9kZXB0aJRLCowHcHJ1
+bmluZ5RLAIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAAAAAAAAAAAAWfAAADgwAA
+AAAAAAAAAAAFnwAAA4MAAAAAAAQAAAWgAAAAAAAAAAAAAAWfAAADg5SMEHNlbGVjdGlvbl9tZXRo
+b2SUSwKMBXRvcF9ulEsDjAt6b29tX2ZhY3RvcpRLAIwLX192ZXJzaW9uX1+USwGMFF9fc2Vzc2lv
+bl9zdGF0ZV9kYXRhlH2UjAd2ZXJzaW9ulEsASwBLAIeUc4wQY29udGV4dF9zZXR0aW5nc5RdlCiM
+FW9yYW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMCmFu
+bm90YXRpb26UjAtFbnVtZXJhdGlvbpRK/v///4aUaBBLAXWMCmF0dHJpYnV0ZXOUfZQojANsb26U
+SwKMA2xhdJRLAnWMBW1ldGFzlH2UjARuYW1llEsBc3ViaBkpgZR9lChoHH2UKIwKYW5ub3RhdGlv
+bpRoH0r+////hpRoEEsBdWghfZQoaCNLAmgkSwJ1aCV9lHViZXUu
+</properties>
+		<properties node_id="6" format="pickle">gASVpAkAAAAAAAB9lCiMD2FwcGVuZF9mZWF0dXJlc5SJjAphdXRvY29tbWl0lIiMEmNvbnRyb2xB
+cmVhVmlzaWJsZZSIjAxyZXBsYWNlbWVudHOUXZQoXZQojCdiYnEgcGxhemEgdGhlIHdhbGsg4Lie
+4Lij4Liw4Lij4Liy4LihIDWUjACUZV2UKIwcYnF1aWNrIOC4muC4suC4h+C5g+C4q+C4jeC5i5Ro
+CGVdlCiMEGNlbnRyYWwgcGludGtlYXeUaAhlXZQojBFjZW50cmFsIHdlc3QgZ2F0ZZRoCGVdlCiM
+BWRlcG90lGgIZV2UKIwjaG9uZGEgYmlnIHdpbmcg4Lie4Lij4Liw4Lij4Liy4LihIDWUaAhlXZQo
+jAxpa2VhIGJhbmd5YWmUaAhlXZQojA9qZXR0IDI0IGZpdG5lc3OUaAhlXZQojAhrYWdvbm95YZRo
+CGVdlCiMCmxlbW9uIGZhcm2UaAhlXZQojBhsdWNreSBzdGFyIGludGVybmF0aW9uYWyUaAhlXZQo
+jBZtYWpvciBjaW5lcGxleCBwaW5rZWF3lGgIZV2UKIwabWF6ZGEg4Lie4Lij4Liw4Lij4Liy4Lih
+IDWUaAhlXZQojA9zcGF6ZWtvZiBjb2ZmZWWUaAhlXZQojCZzdGFyYnVjayB0aGUgd2FsayDguJ7g
+uKPguLDguKPguLLguKEgNZRoCGVdlCiMCXRoZSBzZW5zZZRoCGVdlCiMIXRoZSB3YWxrIOC4o+C4
+suC4iuC4nuC4pOC4geC4qeC5jJRoCGVdlCiMCnZpc3RhIHBhcmuUaAhlXZQojCh3YWZmbGUgeW91
+IHRoZSB3YWxrIOC4nuC4o+C4sOC4o+C4suC4oSA1lGgIZV2UKIwz4LiV4Lij4LiH4LiC4LmJ4Liy
+4Lih4Lin4Lix4LiU4Liq4Lin4LiZ4LmB4LiB4LmJ4LinlGgIZV2UKIxJ4LiV4Lil4Liy4LiU4LiV
+4LmJ4LiZ4LmE4Lih4LmJIOC4reC4suC4o+C4teC4geC4suC4o+C5jOC5gOC4lOC5ieC4meC4l+C5
+jJRoCGVdlCiMIeC4leC4peC4suC4lOC4muC4suC4h+C5g+C4q+C4jeC5iJRoCGVdlCiMJ+C4leC4
+peC4suC4lOC5gOC4iOC5ieC4suC4nuC4o+C4sOC4ouC4spRoCGVdlCiMYeC4mOC4meC4suC4hOC4
+suC4o+C5hOC4l+C4ouC4nuC4suC4k+C4tOC4iuC4ouC5jCDguKrguLLguILguLLguKPguLHguJXg
+uJnguLLguJjguLTguYDguJrguKjguKPguYyUaAhlXZQojDfguJnguJnguJfguYwg4LmA4Lia4Lit
+4Lij4LmM4LmA4LiB4Lit4Lij4Lij4Li14LmIIGNhZmVllGgIZV2UKIwg4Lib4Lix4LmK4LihIHB0
+dCDguKPguKrguLTguIHguLKUaAhlXZQojA/guJ7guLLguJXguYnguLKUaAhlXZQojCPguJ/guK3g
+uKPguYzguJTguJ7guKPguLDguKPguLLguKEgNZRoCGVdlCiMR+C4o+C4niDguKjguLnguJnguKLg
+uYzguIHguLLguKPguYzguYHguJ7guJfguKLguLcg4LiZ4LiZ4LiX4Lia4Li44Lij4Li1lGgIZV2U
+KIw+4Lij4LieIOC5gOC4geC4qeC4oeC4o+C4suC4qeC4juC4o+C5jCDguK3guLTguJnguYDguJXg
+uK3guKPguYyUaAhlXZQojBvguKfguLHguJTguIvguK3guIfguJ7guLnguKWUaAhlXZQojDHguKfg
+uLHguJTguJrguLLguIfguITguYnguK0g4Lia4Liy4LiH4LmD4Lir4LiN4LmLlGgIZV2UKIwV4Lin
+4Lix4LiU4LmC4Lih4Lil4Li1lGgIZV2UKIws4Lin4Li04Lil4Lil4LmI4Liy4LiB4Liy4Lij4LmM
+4LmA4LiU4LmJ4LiZIDGUaAhlXZQojCzguKfguLTguKXguKXguYjguLLguIHguLLguKPguYzguYDg
+uJTguYnguJkgMpRoCGVdlCiMLOC4p+C4tOC4peC4peC5iOC4suC4geC4suC4o+C5jOC5gOC4lOC5
+ieC4mSAzlGgIZV2UKIwh4Lin4Li04Lil4Lil4LmI4Liy4Lie4Liy4Lij4LmM4LiElGgIZV2UKIwe
+4Lit4Lih4Lij4Lia4Liy4LiH4LmD4Lir4LiN4LmLlGgIZV2UKIxJ4LmA4LiE4LmH4LiB4Lif4Li5
+IOC4geC4suC4jeC4iOC4meC4suC4oOC4tOC5gOC4qeC4gSDguJ7guKPguLDguKPguLLguKEgNZRo
+CGVdlCiMJOC5guC4peC4leC4seC4quC4muC4suC4h+C5g+C4q+C4jeC5iJRoCGVdlCiMFeC5guC4
+ruC4oeC5gOC4nuC4peC4qpRoCGVdlCiMNuC5guC4ruC4oeC5guC4m+C4o+C4o+C4seC4leC4meC4
+suC4mOC4tOC5gOC4muC4qOC4o+C5jJRoCGVljBNzYXZlZFdpZGdldEdlb21ldHJ5lENCAdnQywAD
+AAAAAAAAAAAAGQAABZ8AAANRAAAAAAAAAC0AAAWfAAADsAAAAAACAAAABaAAAAAAAAAANQAABZ8A
+AANRlIwLX192ZXJzaW9uX1+USwKMEGNvbnRleHRfc2V0dGluZ3OUXZQojBVvcmFuZ2V3aWRnZXQu
+c2V0dGluZ3OUjAdDb250ZXh0lJOUKYGUfZQojAZ2YWx1ZXOUfZQojAVhZG1pbpRLAEr+////hpSM
+C2lzX2RlY29kaW5nlEsBSv7///+GlIwIbGF0X2F0dHKUjANsYXSUS2aGlIwIbG9uX2F0dHKUjANs
+b26US2aGlIwIc3RyX2F0dHKUjARuYW1llEtlhpSMCHN0cl90eXBllIwPTWFqb3IgY2l0eSAoVVMp
+lEr+////hpRoXUsCdYwKYXR0cmlidXRlc5R9lCiMA2xvbpRLAowDbGF0lEsCdYwFbWV0YXOUfZQo
+jARuYW1llEsBjAdDbHVzdGVylEsBdXViaGIpgZR9lChoZX2UKIwFYWRtaW6USwBK/v///4aUjAtp
+c19kZWNvZGluZ5RLAUr+////hpSMCGxhdF9hdHRylGh6S2aGlIwIbG9uX2F0dHKUaHlLZoaUjAhz
+dHJfYXR0cpROSv7///+GlIwIc3RyX3R5cGWUjA9NYWpvciBjaXR5IChVUymUSv7///+GlGhdSwJ1
+aHd9lChoeUsCaHpLAnVoe32UaH5LAXN1YmV1Lg==
+</properties>
+		<properties node_id="7" format="pickle">gASVQAMAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNzYXZl
+ZFdpZGdldEdlb21ldHJ5lENCAdnQywADAAAAAAAAAAAAGQAABZ8AAANRAAAAAAAAAC0AAAWfAAAD
+sAAAAAACAAAABaAAAAAAAAAANQAABZ8AAANRlIwJc2VsZWN0aW9ulE6MD3Zpc3VhbF9zZXR0aW5n
+c5R9lIwFZ3JhcGiUfZQojAthbHBoYV92YWx1ZZRL/4wNY2xhc3NfZGVuc2l0eZSJjAZmcmVlemWU
+iYwLaml0dGVyX3NpemWUSwCME2xhYmVsX29ubHlfc2VsZWN0ZWSUiYwLcG9pbnRfd2lkdGiUSxSM
+CXNob3dfZ3JpZJSJjAtzaG93X2xlZ2VuZJSIjBF0aWxlX3Byb3ZpZGVyX2tleZSMDU9wZW5TdHJl
+ZXRNYXCUdYwLX192ZXJzaW9uX1+USwOMEGNvbnRleHRfc2V0dGluZ3OUXZQojBVvcmFuZ2V3aWRn
+ZXQuc2V0dGluZ3OUjAdDb250ZXh0lJOUKYGUfZQojAZ2YWx1ZXOUfZQojAphdHRyX2NvbG9ylIwH
+Q2x1c3RlcpRLZYaUjAphdHRyX2xhYmVslE5K/v///4aUjAhhdHRyX2xhdJSMA2xhdJRLZoaUjAhh
+dHRyX2xvbpSMA2xvbpRLZoaUjAphdHRyX3NoYXBllE5K/v///4aUjAlhdHRyX3NpemWUTkr+////
+hpRoCH2UaBRLA3WMCmF0dHJpYnV0ZXOUfZQojANsb26USwKMA2xhdJRLAnWMBW1ldGFzlH2UKIwE
+bmFtZZRLAYwHQ2x1c3RlcpRLAYwIbmFtZSAoMSmUSwN1dWJoGSmBlH2UKGgcfZQojAphdHRyX2Nv
+bG9ylGg1S2WGlIwKYXR0cl9sYWJlbJROSv7///+GlIwIYXR0cl9sYXSUaDFLZoaUjAhhdHRyX2xv
+bpRoMEtmhpSMCmF0dHJfc2hhcGWUTkr+////hpSMCWF0dHJfc2l6ZZROSv7///+GlIwFZ3JhcGiU
+fZRoFEsDdWgufZQoaDBLAmgxSwJ1aDJ9lChoNUsBjARuYW1llEsDdXViZXUu
+</properties>
+		<properties node_id="8" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x005\x00\x00\x04\xff\x00\x00\x03\x1f\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'select_rows': True, 'selected_cols': None, 'selected_rows': None, 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>

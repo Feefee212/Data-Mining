@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Python Script" position="(246.0, 246.0)" />
+		<node id="1" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table" position="(551.0, 428.0)" />
+		<node id="2" name="Box Plot" qualified_name="Orange.widgets.visualize.owboxplot.OWBoxPlot" project_name="Orange3" version="" title="Box Plot" position="(896.0, 319.0)" />
+		<node id="3" name="Distributions" qualified_name="Orange.widgets.visualize.owdistributions.OWDistributions" project_name="Orange3" version="" title="Distributions" position="(720.0, 418.0)" />
+		<node id="4" name="Edit Domain" qualified_name="Orange.widgets.data.oweditdomain.OWEditDomain" project_name="Orange3" version="" title="Edit Domain" position="(374.0, 245.0)" />
+		<node id="5" name="Preprocess" qualified_name="Orange.widgets.data.owpreprocess.OWPreprocess" project_name="Orange3" version="" title="Preprocess" position="(220.0, 386.0)" />
+		<node id="6" name="Unique" qualified_name="Orange.widgets.data.owunique.OWUnique" project_name="Orange3" version="" title="Unique" position="(426.0, 329.0)" />
+		<node id="7" name="Scatter Plot" qualified_name="Orange.widgets.visualize.owscatterplot.OWScatterPlot" project_name="Orange3" version="" title="Scatter Plot" position="(725.0, 126.0)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="1" sink_node_id="3" source_channel="Selected Data" sink_channel="Data" enabled="true" />
+		<link id="1" source_node_id="1" sink_node_id="2" source_channel="Selected Data" sink_channel="Data" enabled="true" />
+		<link id="2" source_node_id="0" sink_node_id="4" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="3" source_node_id="4" sink_node_id="5" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="4" source_node_id="5" sink_node_id="6" source_channel="Preprocessed Data" sink_channel="Data" enabled="true" />
+		<link id="5" source_node_id="6" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="6" source_node_id="1" sink_node_id="7" source_channel="Selected Data" sink_channel="Data" enabled="true" />
+	</links>
+	<annotations />
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 4, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x00\x05\x9f\x00\x00\x03N\x00\x00\x00\x00\x00\x00\x00-\x00\x00\x05\x9f\x00\x00\x03\xb0\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03N', 'scriptLibrary': [{'name': 'get week', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'elbow', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'warehouse', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport sklearn\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom sklearn.metrics import silhouette_score\nfrom scipy.cluster.hierarchy import linkage\nfrom scipy.cluster.hierarchy import dendrogram\nfrom scipy.cluster.hierarchy import cut_tree\n\nretail= table_to_frame(in_data)\n\nretail['CustomerID'] = retail['CustomerID'].astype(str)\nretail['Amount'] = retail['Quantity']*retail['UnitPrice']\n\nrfm_m = retail.groupby('CustomerID')['Amount'].sum()\nrfm_m = rfm_m.reset_index()\nrfm_f = retail.groupby('CustomerID')['InvoiceNo'].count()\nrfm_f = rfm_f.reset_index()\nrfm_f.columns = ['CustomerID', 'Frequency']\n\nrfm = pd.merge(rfm_m, rfm_f, on='CustomerID', how='inner')\n\nretail['InvoiceDate'] = pd.to_datetime(retail['InvoiceDate'],format='%d-%m-%Y %H:%M')\n\nmax_date = max(retail['InvoiceDate'])\nretail['Diff'] = max_date - retail['InvoiceDate']\nrfm_p = retail.groupby('CustomerID')['Diff'].min()\nrfm_p = rfm_p.reset_index()\nrfm_p['Diff'] = rfm_p['Diff'].dt.days\nrfm = pd.merge(rfm, rfm_p, on='CustomerID', how='inner')\nrfm.columns = ['CustomerID', 'Amount', 'Frequency', 'Recency']\n#here you go\nout_data = table_from_frame(rfm)", 'filename': None}, {'name': 'warehouse2', 'script': "\nfrom Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom itertools import combinations \nfrom sklearn.cluster import KMeans\nimport folium\n\ndata= table_to_frame(in_data)\n# Color options\ncolor_options = {'demand': 'red',\n                 'supply': 'yellow',\n                 'flow': 'black',\n                 'cog': 'blue',\n                 'candidate': 'black',\n                 'other': 'gray'}\n\ndef fun1(x):\n    if x == 'Supply':\n        return 1.0\n    elif x == 'Demand':\n        return 2.0\n    else:\n        return 0\n \ndata['a1'] = data['type'].apply(fun1).astype(np.int64)\ndata['a2'] = data['volume'].astype(np.int64)\n \ndata['cal_vol'] = data['a1']*data['a2']\ndata=data.drop(['a1','a2'], axis=1)\n\ncands = data.loc[data['type'].str.lower()=='candidate']\nlocs = data.loc[data['cal_vol']&gt;0]\n\nprint(cands)\n#print(locs)\nout_data = table_from_frame(data)", 'filename': None}, {'name': 'New script', 'script': 'from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport random\nfrom random import randint\nimport datetime\n\n#table= table_to_frame(df)\nsalespersons=[\'john\',\'peter\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'adam\',\'mike\',\'joe\',\'joe\',\'joe\',\'frank\',\'frank\',\'paul\']\nproducts= [\n           {"name":"p1","price":100},\n           {"name":"p2","price":150},\n           {"name":"p3","price":200},\n           {"name":"p4","price":200},\n           {"name":"p5","price":150},\n           {"name":"p6","price":300},\n           {"name":"p7","price":400},\n           {"name":"p8","price":500},\n           {"name":"p9","price":600},\n           {"name":"p10","price":1000}\n           ]\nlocations= [\'BKK\',\'Bangkok\',\'bkk\',\'Phuket\',\'PHUKET\',None]\nlist = []\nfor tran_id in range(1,10000+1):\n    cust_id     = random.randrange(1, 100+1)\n    p_idx       = random.randrange(0,10)\n    product_id  = products[p_idx]["name"]\n    price       = products[p_idx]["price"]\n    location    = random.choice(locations)\n    date        = datetime.date(randint(2022,2022), randint(1,3),randint(1,28))\n    if date.month ==1:\n        maxqty  = 2\n        saleperson  = random.choice(salespersons[0:8])\n    elif date.month ==2:\n        maxqty  = 6\n        saleperson  =  random.choice(salespersons[9:10])\n    else:\n        maxqty  = 4\n        saleperson  =  random.choice(salespersons[11:16])\n    qty         = random.randrange(1,maxqty+1)\n     \n    tran = {\n            "tran_id":tran_id,\n            "cust_id":cust_id,\n            "product_id":product_id,\n            "qty":qty,\n            "price":price,\n            "location":location,\n            "date":date,\n            "saleperson":saleperson\n    }\n    list.append(tran)\n\ndup_index = range(1,100)\nfor idx in dup_index:\n    i = random.randrange(1,10000)\n    list.append(list[i])\ndf = pd.DataFrame.from_dict(list)\n#print(df.head())\n \n\nout_data = table_from_frame(df)', 'filename': None}], 'scriptText': 'from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport random\nfrom random import randint\nimport datetime\n\n#table= table_to_frame(df)\nsalespersons=[\'john\',\'peter\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'adam\',\'mike\',\'joe\',\'joe\',\'joe\',\'frank\',\'frank\',\'paul\']\nproducts= [\n           {"name":"p1","price":100},\n           {"name":"p2","price":150},\n           {"name":"p3","price":200},\n           {"name":"p4","price":200},\n           {"name":"p5","price":150},\n           {"name":"p6","price":300},\n           {"name":"p7","price":400},\n           {"name":"p8","price":500},\n           {"name":"p9","price":600},\n           {"name":"p10","price":1000}\n           ]\nlocations= [\'BKK\',\'Bangkok\',\'bkk\',\'Phuket\',\'PHUKET\',None]\nlist = []\nfor tran_id in range(1,10000+1):\n    cust_id     = random.randrange(1, 100+1)\n    p_idx       = random.randrange(0,10)\n    product_id  = products[p_idx]["name"]\n    price       = products[p_idx]["price"]\n    location    = random.choice(locations)\n    date        = datetime.date(randint(2022,2022), randint(1,3),randint(1,28))\n    if date.month ==1:\n        maxqty  = 2\n        saleperson  = random.choice(salespersons[0:8])\n    elif date.month ==2:\n        maxqty  = 6\n        saleperson  =  random.choice(salespersons[9:10])\n    else:\n        maxqty  = 4\n        saleperson  =  random.choice(salespersons[11:16])\n    qty         = random.randrange(1,maxqty+1)\n     \n    tran = {\n            "tran_id":tran_id,\n            "cust_id":cust_id,\n            "product_id":product_id,\n            "qty":qty,\n            "price":price,\n            "location":location,\n            "date":date,\n            "saleperson":saleperson\n    }\n    list.append(tran)\n\ndup_index = range(1,100)\nfor idx in dup_index:\n    i = random.randrange(1,10000)\n    list.append(list[i])\ndf = pd.DataFrame.from_dict(list)\n#print(df.head())\n \n\nout_data = table_from_frame(df)', 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x02\r\x00\x00\x00k\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="1" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x00\x05\x9f\x00\x00\x03L\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03L\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03L', 'select_rows': True, 'selected_cols': [], 'selected_rows': [], 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+		<properties node_id="2" format="pickle">gASVMQIAAAAAAAB9lCiMB2NvbXBhcmWUSwKMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNvcmRlcl9i
+eV9pbXBvcnRhbmNllImMHG9yZGVyX2dyb3VwaW5nX2J5X2ltcG9ydGFuY2WUiYwTc2F2ZWRXaWRn
+ZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAAAAAAABkAAAWfAAADTgAAAAAAAAAtAAAFnwAAA7AAAAAA
+AgAAAAWgAAAAAAAAADUAAAWfAAADTpSMEHNob3dfYW5ub3RhdGlvbnOUiIwLc2hvd19sYWJlbHOU
+iIwNc2lnX3RocmVzaG9sZJRHP6mZmZmZmZqMCnNvcnRfZnJlcXOUiYwIc3RhdHRlc3SUSwCMCXN0
+cmV0Y2hlZJSJjAtfX3ZlcnNpb25fX5RLAYwQY29udGV4dF9zZXR0aW5nc5RdlIwVb3Jhbmdld2lk
+Z2V0LnNldHRpbmdzlIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwJYXR0cmlidXRllIwD
+cXR5lEtmhpSMCWdyb3VwX3ZhcpSMCnNhbGVwZXJzb26US2WGlIwJc2VsZWN0aW9ulClK/v///4aU
+aA1LAXWMCmF0dHJpYnV0ZXOUfZQojAd0cmFuX2lklEsCjAdjdXN0X2lklEsCjApwcm9kdWN0X2lk
+lEsBaBhLAowFcHJpY2WUSwKMCGxvY2F0aW9ulEsBjARkYXRllEsEaBtLAXWMBW1ldGFzlH2UdWJh
+dS4=
+</properties>
+		<properties node_id="3" format="pickle">gASVJgIAAAAAAAB9lCiMCmF1dG9fYXBwbHmUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMEGN1bXVs
+YXRpdmVfZGlzdHKUiYwTZml0dGVkX2Rpc3RyaWJ1dGlvbpRLAYwJaGlkZV9iYXJzlIiMDWtkZV9z
+bW9vdGhpbmeUSwqME3NhdmVkV2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAQwAAABKAAAEYAAA
+AnoAAAEMAAAAZgAABGAAAAJ6AAAAAAAAAAAFoAAAAQwAAABmAAAEYAAAAnqUjApzaG93X3Byb2Jz
+lImMDHNvcnRfYnlfZnJlcZSJjA9zdGFja2VkX2NvbHVtbnOUiYwLX192ZXJzaW9uX1+USwGMEGNv
+bnRleHRfc2V0dGluZ3OUXZSMFW9yYW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9
+lCiMBnZhbHVlc5R9lCiMBGN2YXKUTkr+////hpSMDm51bWJlcl9vZl9iaW5zlEsASv7///+GlIwJ
+c2VsZWN0aW9ulI+USv7///+GlIwDdmFylIwDcXR5lEtmhpRoDEsBdYwKYXR0cmlidXRlc5R9lCiM
+B3RyYW5faWSUSwKMB2N1c3RfaWSUSwKMCnByb2R1Y3RfaWSUSwFoHksCjAVwcmljZZRLAowIbG9j
+YXRpb26USwGMBGRhdGWUSwSMCnNhbGVwZXJzb26USwF1jAVtZXRhc5R9lHViYXUu
+</properties>
+		<properties node_id="4" format="pickle">gASV4AMAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNzYXZlZFdpZGdldEdlb21ldHJ5
+lENCAdnQywADAAAAAAE2AAAAeQAAA8kAAAKpAAABNgAAAJUAAAPJAAACqQAAAAAAAAAABaAAAAE2
+AAAAlQAAA8kAAAKplIwLX192ZXJzaW9uX1+USwKMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9yYW5n
+ZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMFF9kb21haW5f
+Y2hhbmdlX3N0b3JllH2UKIwEUmVhbJQojAdDbHVzdGVylEsAjAFmlIaUKYl0lIaUXZQojA1Bc0Nh
+dGVnb3JpY2FslCmGlIwRQ2F0ZWdvcmllc01hcHBpbmeUXZQojAMwLjCUjAJnMZSGlIwDMS4wlIwC
+ZzKUhpSMAzIuMJSMAmczlIaUjAMzLjCUjAJnNJSGlIwDNC4wlIwCZzWUhpRlhZSGlGWMC0NhdGVn
+b3JpY2FslCiMCGxvY2F0aW9ulCiMA0JLS5SMB0Jhbmdrb2uUjAZQSFVLRVSUjAZQaHVrZXSUjANi
+a2uUdJQpiXSUhpRdlIwRQ2F0ZWdvcmllc01hcHBpbmeUXZQojANCS0uUjAdCYW5na29rlIaUjAdC
+YW5na29rlIwHQmFuZ2tva5SGlIwGUEhVS0VUlIwGUGh1a2V0lIaUjAZQaHVrZXSUjAZQaHVrZXSU
+hpSMA2Jra5SMB0Jhbmdrb2uUhpRlhZSGlGGMC0NhdGVnb3JpY2FslCiMCGxvY2F0aW9ulCiMA0JL
+S5SMB0Jhbmdrb2uUjAZQSFVLRVSUjAZQaHVrZXSUjANia2uUdJQpiHSUhpRdlIwRQ2F0ZWdvcmll
+c01hcHBpbmeUXZQoaEyMB0Jhbmdrb2uUhpRoTYwHQmFuZ2tva5SGlGhOjAZQaHVrZXSUhpRoT4wG
+UGh1a2V0lIaUaFCMB0Jhbmdrb2uUhpRlhZSGlGF1Sv7///+GlIwWX21lcmdlX2RpYWxvZ19zZXR0
+aW5nc5R9lEr8////hpSMDl9zZWxlY3RlZF9pdGVtlIwIbG9jYXRpb26USwCGlEr+////hpSMEW91
+dHB1dF90YWJsZV9uYW1llIwAlEr+////hpRoBEsCdYwKYXR0cmlidXRlc5R9lCiMB3RyYW5faWSU
+SwKMB2N1c3RfaWSUSwKMCnByb2R1Y3RfaWSUSwGMA3F0eZRLAowFcHJpY2WUSwJoaEsBjARkYXRl
+lEsEjApzYWxlcGVyc29ulEsBdYwFbWV0YXOUfZR1YmF1Lg==
+</properties>
+		<properties node_id="5" format="literal">{'autocommit': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x00\x05\x9f\x00\x00\x03N\x00\x00\x00\x00\x00\x00\x00-\x00\x00\x05\x9f\x00\x00\x03\xb0\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03N', 'storedsettings': {'name': '', 'preprocessors': [('orange.preprocess.impute', {'method': 2})]}, '__version__': 2}</properties>
+		<properties node_id="6" format="pickle">gASVnQEAAAAAAAB9lCiMCmF1dG9jb21taXSUiIwSY29udHJvbEFyZWFWaXNpYmxllIiME3NhdmVk
+V2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAAAAAAAZAAAFnwAAA04AAAAAAAAALQAABZ8AAAOw
+AAAAAAIAAAAFoAAAAAAAAAA1AAAFnwAAA06UjAp0aWVicmVha2VylIwNTGFzdCBpbnN0YW5jZZSM
+C19fdmVyc2lvbl9flEsBjBBjb250ZXh0X3NldHRpbmdzlF2UjBVvcmFuZ2V3aWRnZXQuc2V0dGlu
+Z3OUjAdDb250ZXh0lJOUKYGUfZQojAZ2YWx1ZXOUfZQojA1zZWxlY3RlZF92YXJzlF2UjAdjdXN0
+X2lklEtmhpRhSv3///+GlGgHSwF1jAphdHRyaWJ1dGVzlH2UKIwHdHJhbl9pZJRLAmgTSwKMCnBy
+b2R1Y3RfaWSUSwGMA3F0eZRLAowFcHJpY2WUSwKMCGxvY2F0aW9ulEsBjARkYXRllEsEjApzYWxl
+cGVyc29ulEsBdYwFbWV0YXOUfZR1YmF1Lg==
+</properties>
+		<properties node_id="7" format="pickle">gASV1QIAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMC2F1dG9fc2FtcGxllIiMEmNvbnRyb2xBcmVh
+VmlzaWJsZZSIjBNzYXZlZFdpZGdldEdlb21ldHJ5lENCAdnQywADAAAAAAAqAAAAMAAABJEAAALn
+AAAAKgAAAEwAAASRAAAC5wAAAAAAAAAABaAAAAAqAAAATAAABJEAAALnlIwJc2VsZWN0aW9ulE6M
+EXRvb2x0aXBfc2hvd3NfYWxslIiMD3Zpc3VhbF9zZXR0aW5nc5R9lIwFZ3JhcGiUfZQojAthbHBo
+YV92YWx1ZZRLgIwNY2xhc3NfZGVuc2l0eZSIjBFqaXR0ZXJfY29udGludW91c5SJjAtqaXR0ZXJf
+c2l6ZZRLCowTbGFiZWxfb25seV9zZWxlY3RlZJSJjBZvcnRob25vcm1hbF9yZWdyZXNzaW9ulImM
+C3BvaW50X3dpZHRolEsKjAlzaG93X2dyaWSUiIwLc2hvd19sZWdlbmSUiIwNc2hvd19yZWdfbGlu
+ZZSJdYwLX192ZXJzaW9uX1+USwWMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9yYW5nZXdpZGdldC5z
+ZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMCmF0dHJfY29sb3KUjApzYWxl
+cGVyc29ulEtlhpSMCmF0dHJfbGFiZWyUTkr+////hpSMCmF0dHJfc2hhcGWUjAhsb2NhdGlvbpRL
+ZYaUjAlhdHRyX3NpemWUjARkYXRllEtohpSMBmF0dHJfeJSMA3F0eZRLZoaUjAZhdHRyX3mUjAVw
+cmljZZRLZoaUaAp9lGgWSwV1jAphdHRyaWJ1dGVzlH2UKIwHdHJhbl9pZJRLAowHY3VzdF9pZJRL
+AowKcHJvZHVjdF9pZJRLAWgsSwJoL0sCaCZLAWgpSwRoIUsBdYwFbWV0YXOUfZR1YmF1Lg==
+</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>

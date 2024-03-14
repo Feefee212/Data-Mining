@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Python Script" position="(94.0, 81.0)" />
+		<node id="1" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table" position="(313.0, 49.0)" />
+		<node id="2" name="Save Data" qualified_name="Orange.widgets.data.owsave.OWSave" project_name="Orange3" version="" title="Save Data" position="(215.0, 95.0)" />
+		<node id="3" name="Unique" qualified_name="Orange.widgets.data.owunique.OWUnique" project_name="Orange3" version="" title="Unique" position="(211.0, 185.0)" />
+		<node id="4" name="Preprocess" qualified_name="Orange.widgets.data.owpreprocess.OWPreprocess" project_name="Orange3" version="" title="Preprocess" position="(314.0, 185.0)" />
+		<node id="5" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Python Script (1)" position="(445.0, 185.0)" />
+		<node id="6" name="Pivot Table" qualified_name="Orange.widgets.data.owpivot.OWPivot" project_name="Orange3" version="" title="Pivot Table" position="(708.0, 180.0)" />
+		<node id="7" name="Box Plot" qualified_name="Orange.widgets.visualize.owboxplot.OWBoxPlot" project_name="Orange3" version="" title="Box Plot" position="(711.0, 268.0)" />
+		<node id="8" name="Edit Domain" qualified_name="Orange.widgets.data.oweditdomain.OWEditDomain" project_name="Orange3" version="" title="Edit Domain (1)" position="(576.0, 193.0)" />
+		<node id="9" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table (3)" position="(464.0, 69.0)" />
+		<node id="10" name="Paint Data" qualified_name="Orange.widgets.data.owpaintdata.OWPaintData" project_name="Orange3" version="" title="train data" position="(102.0, 403.0)" />
+		<node id="11" name="Polynomial Regression" qualified_name="orangecontrib.educational.widgets.owpolynomialregression.OWPolynomialRegression" project_name="Orange3-Educational" version="" title="Polynomial Regression" position="(404.0, 401.0)" />
+		<node id="12" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWDataTable" project_name="Orange3" version="" title="Data Table (1)" position="(584.0, 401.0)" />
+		<node id="13" name="Paint Data" qualified_name="Orange.widgets.data.owpaintdata.OWPaintData" project_name="Orange3" version="" title="test data" position="(96.0, 548.0)" />
+		<node id="14" name="Test and Score" qualified_name="Orange.widgets.evaluate.owtestandscore.OWTestAndScore" project_name="Orange3" version="" title="Test and Score" position="(522.0, 578.0)" />
+		<node id="15" name="Select Columns" qualified_name="Orange.widgets.data.owselectcolumns.OWSelectAttributes" project_name="Orange3" version="" title="Select Columns" position="(223.0, 424.5)" />
+		<node id="16" name="Select Columns" qualified_name="Orange.widgets.data.owselectcolumns.OWSelectAttributes" project_name="Orange3" version="" title="Select Columns (1)" position="(231.0, 559.5)" />
+		<node id="17" name="Linear Regression" qualified_name="Orange.widgets.model.owlinearregression.OWLinearRegression" project_name="Orange3" version="" title="Linear Regression (prevent regularization from overfitting)" position="(264.0, 296.0)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="1" source_node_id="0" sink_node_id="2" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="2" source_node_id="3" sink_node_id="4" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="3" source_node_id="4" sink_node_id="5" source_channel="Preprocessed Data" sink_channel="Data" enabled="true" />
+		<link id="4" source_node_id="5" sink_node_id="8" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="5" source_node_id="8" sink_node_id="6" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="6" source_node_id="8" sink_node_id="7" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="7" source_node_id="0" sink_node_id="3" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="8" source_node_id="5" sink_node_id="9" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="9" source_node_id="11" sink_node_id="12" source_channel="Coefficients" sink_channel="Data" enabled="true" />
+		<link id="10" source_node_id="10" sink_node_id="15" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="11" source_node_id="15" sink_node_id="11" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="12" source_node_id="13" sink_node_id="16" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="13" source_node_id="16" sink_node_id="14" source_channel="Data" sink_channel="Test Data" enabled="true" />
+		<link id="14" source_node_id="11" sink_node_id="14" source_channel="Learner" sink_channel="Learner" enabled="true" />
+		<link id="15" source_node_id="15" sink_node_id="14" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="16" source_node_id="17" sink_node_id="11" source_channel="Learner" sink_channel="Learner" enabled="true" />
+	</links>
+	<annotations>
+		<text id="0" type="text/plain" rect="(245.0, -13.0, 283.0, 35.0)" font-family=".AppleSystemUIFont" font-size="16">data processing and visualization</text>
+		<text id="1" type="text/plain" rect="(618.0, 496.0, 130.0, 61.0)" font-family=".AppleSystemUIFont" font-size="16">Test and score need 3 thing 
+
+- train data 
+- test data 
+- learner</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 4, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00.\x00\x00\x00\x82\x00\x00\x04\x9d\x00\x00\x03L\x00\x00\x00.\x00\x00\x00\x9e\x00\x00\x04\x9d\x00\x00\x03L\x00\x00\x00\x00\x00\x00\x00\x00\x05\xa0\x00\x00\x00.\x00\x00\x00\x9e\x00\x00\x04\x9d\x00\x00\x03L', 'scriptLibrary': [{'name': 'get week', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'elbow', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'warehouse', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport sklearn\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom sklearn.metrics import silhouette_score\nfrom scipy.cluster.hierarchy import linkage\nfrom scipy.cluster.hierarchy import dendrogram\nfrom scipy.cluster.hierarchy import cut_tree\n\nretail= table_to_frame(in_data)\n\nretail['CustomerID'] = retail['CustomerID'].astype(str)\nretail['Amount'] = retail['Quantity']*retail['UnitPrice']\n\nrfm_m = retail.groupby('CustomerID')['Amount'].sum()\nrfm_m = rfm_m.reset_index()\nrfm_f = retail.groupby('CustomerID')['InvoiceNo'].count()\nrfm_f = rfm_f.reset_index()\nrfm_f.columns = ['CustomerID', 'Frequency']\n\nrfm = pd.merge(rfm_m, rfm_f, on='CustomerID', how='inner')\n\nretail['InvoiceDate'] = pd.to_datetime(retail['InvoiceDate'],format='%d-%m-%Y %H:%M')\n\nmax_date = max(retail['InvoiceDate'])\nretail['Diff'] = max_date - retail['InvoiceDate']\nrfm_p = retail.groupby('CustomerID')['Diff'].min()\nrfm_p = rfm_p.reset_index()\nrfm_p['Diff'] = rfm_p['Diff'].dt.days\nrfm = pd.merge(rfm, rfm_p, on='CustomerID', how='inner')\nrfm.columns = ['CustomerID', 'Amount', 'Frequency', 'Recency']\n#here you go\nout_data = table_from_frame(rfm)", 'filename': None}, {'name': 'warehouse2', 'script': "\nfrom Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom itertools import combinations \nfrom sklearn.cluster import KMeans\nimport folium\n\ndata= table_to_frame(in_data)\n# Color options\ncolor_options = {'demand': 'red',\n                 'supply': 'yellow',\n                 'flow': 'black',\n                 'cog': 'blue',\n                 'candidate': 'black',\n                 'other': 'gray'}\n\ndef fun1(x):\n    if x == 'Supply':\n        return 1.0\n    elif x == 'Demand':\n        return 2.0\n    else:\n        return 0\n \ndata['a1'] = data['type'].apply(fun1).astype(np.int64)\ndata['a2'] = data['volume'].astype(np.int64)\n \ndata['cal_vol'] = data['a1']*data['a2']\ndata=data.drop(['a1','a2'], axis=1)\n\ncands = data.loc[data['type'].str.lower()=='candidate']\nlocs = data.loc[data['cal_vol']&gt;0]\n\nprint(cands)\n#print(locs)\nout_data = table_from_frame(data)", 'filename': None}, {'name': 'mock data1', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport sklearn\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom sklearn.metrics import silhouette_score\nfrom scipy.cluster.hierarchy import linkage\nfrom scipy.cluster.hierarchy import dendrogram\nfrom scipy.cluster.hierarchy import cut_tree\n\nretail= table_to_frame(in_data)\n\nretail['CustomerID'] = retail['CustomerID'].astype(str)\nretail['Amount'] = retail['Quantity']*retail['UnitPrice']\n\nrfm_m = retail.groupby('CustomerID')['Amount'].sum()\nrfm_m = rfm_m.reset_index()\nrfm_f = retail.groupby('CustomerID')['InvoiceNo'].count()\nrfm_f = rfm_f.reset_index()\nrfm_f.columns = ['CustomerID', 'Frequency']\n\nrfm = pd.merge(rfm_m, rfm_f, on='CustomerID', how='inner')\n\nretail['InvoiceDate'] = pd.to_datetime(retail['InvoiceDate'],format='%d-%m-%Y %H:%M')\n\nmax_date = max(retail['InvoiceDate'])\nretail['Diff'] = max_date - retail['InvoiceDate']\nrfm_p = retail.groupby('CustomerID')['Diff'].min()\nrfm_p = rfm_p.reset_index()\nrfm_p['Diff'] = rfm_p['Diff'].dt.days\nrfm = pd.merge(rfm, rfm_p, on='CustomerID', how='inner')\nrfm.columns = ['CustomerID', 'Amount', 'Frequency', 'Recency']\n#here you go\nout_data = table_from_frame(rfm)", 'filename': None}], 'scriptText': 'from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport pandas as pd\nimport random\nfrom random import randint\nimport datetime\n\n#table= table_to_frame(df)\nsalespersons=[\'john\',\'peter\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'smith\',\'adam\',\'mike\',\'joe\',\'joe\',\'joe\',\'frank\',\'frank\',\'paul\']\nproducts= [\n           {"name":"p1","price":100},\n           {"name":"p2","price":150},\n           {"name":"p3","price":200},\n           {"name":"p4","price":200},\n           {"name":"p5","price":150},\n           {"name":"p6","price":300},\n           {"name":"p7","price":400},\n           {"name":"p8","price":500},\n           {"name":"p9","price":600},\n           {"name":"p10","price":1000}\n           ]\nlocations= [\'BKK\',\'Bangkok\',\'bkk\',\'Phuket\',\'PHUKET\',None]\nlist = []\nfor tran_id in range(1,10000+1):\n    cust_id     = random.randrange(1, 100+1)\n    p_idx       = random.randrange(0,10)\n    product_id  = products[p_idx]["name"]\n    price       = products[p_idx]["price"]\n    location    = random.choice(locations)\n    date        = datetime.date(randint(2022,2022), randint(1,3),randint(1,28))\n    if date.month ==1:\n        maxqty  = 2\n        saleperson  = random.choice(salespersons[0:8])\n    elif date.month ==2:\n        maxqty  = 6\n        saleperson  =  random.choice(salespersons[9:10])\n    else:\n        maxqty  = 4\n        saleperson  =  random.choice(salespersons[11:16])\n    qty         = random.randrange(1,maxqty+1)\n     \n    tran = {\n            "tran_id":tran_id,\n            "cust_id":cust_id,\n            "product_id":product_id,\n            "qty":qty,\n            "price":price,\n            "location":location,\n            "date":date,\n            "saleperson":saleperson\n    }\n    list.append(tran)\n\ndup_index = range(1,100)\nfor idx in dup_index:\n    i = random.randrange(1,10000)\n    list.append(list[i])\ndf = pd.DataFrame.from_dict(list)\n#print(df.head())\n \n\nout_data = table_from_frame(df)', 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x02\r\x00\x00\x00k\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="1" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'select_rows': True, 'selected_cols': [], 'selected_rows': [], 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+		<properties node_id="2" format="literal">{'add_type_annotations': False, 'auto_save': False, 'controlAreaVisible': True, 'filter': 'Microsoft Excel spreadsheet (*.xlsx)', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x02\x00\x00\x00\x01.\x00\x00\x03$\x00\x00\x01\xd0\x00\x00\x02\x00\x00\x00\x01J\x00\x00\x03$\x00\x00\x01\xd0\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x02\x00\x00\x00\x01J\x00\x00\x03$\x00\x00\x01\xd0', 'stored_name': 'data1.xlsx', 'stored_path': '.', '__version__': 3}</properties>
+		<properties node_id="3" format="pickle">gASVsQIAAAAAAAB9lCiMCmF1dG9jb21taXSUiIwSY29udHJvbEFyZWFWaXNpYmxllIiME3NhdmVk
+V2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAAAAAAAAAAAFnwAAA4MAAAAAAAAAAAAABZ8AAAOD
+AAAAAAAEAAAFoAAAAAAAAAAAAAAFnwAAA4OUjAp0aWVicmVha2VylIwNTGFzdCBpbnN0YW5jZZSM
+C19fdmVyc2lvbl9flEsBjBBjb250ZXh0X3NldHRpbmdzlF2UKIwVb3Jhbmdld2lkZ2V0LnNldHRp
+bmdzlIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwNc2VsZWN0ZWRfdmFyc5RdlIwHdHJh
+bl9pZJRLZoaUYUr9////hpRoB0sBdYwKYXR0cmlidXRlc5R9lCiMB3RyYW5faWSUSwKMB2N1c3Rf
+aWSUSwKMCnByb2R1Y3RfaWSUSwGMA3F0eZRLAowFcHJpY2WUSwKMCGxvY2F0aW9ulEsBjARkYXRl
+lEsEjApzYWxlcGVyc29ulEsBdYwFbWV0YXOUfZR1YmgMKYGUfZQoaA99lCiMDXNlbGVjdGVkX3Zh
+cnOUXZSMB3RyYW5faWSUS2aGlGFK/f///4aUaAdLAXVoFn2UKIwHdHJhbl9pZJRLAowHY3VzdF9p
+ZJRLAowKcHJvZHVjdF9pZJRLAYwDcXR5lEsCjAVwcmljZZRLAowIbG9jYXRpb26USwGMBGRhdGWU
+SwR1aCB9lHViaAwpgZR9lChoD32UKGglXZSMB3RyYW5faWSUS2aGlGFK/f///4aUaAdLAXVoFn2U
+KGg3SwKMB2N1c3RfaWSUSwKMCnByb2R1Y3RfaWSUSwGMA3F0eZRLAowFcHJpY2WUSwKMCGxvY2F0
+aW9ulEsBdWggfZR1YmV1Lg==
+</properties>
+		<properties node_id="4" format="literal">{'autocommit': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'storedsettings': {'name': '', 'preprocessors': [('orange.preprocess.impute', {'method': 5})]}, '__version__': 2}</properties>
+		<properties node_id="5" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83\x00\x00\x00\x00\x00\x04\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x9f\x00\x00\x03\x83', 'scriptLibrary': [{'name': 'get week', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'elbow', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\ndf['week'] = df['date'].dt.isocalendar().week\n#here you go\nout_data = table_from_frame(df)", 'filename': None}, {'name': 'warehouse', 'script': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport sklearn\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom sklearn.metrics import silhouette_score\nfrom scipy.cluster.hierarchy import linkage\nfrom scipy.cluster.hierarchy import dendrogram\nfrom scipy.cluster.hierarchy import cut_tree\n\nretail= table_to_frame(in_data)\n\nretail['CustomerID'] = retail['CustomerID'].astype(str)\nretail['Amount'] = retail['Quantity']*retail['UnitPrice']\n\nrfm_m = retail.groupby('CustomerID')['Amount'].sum()\nrfm_m = rfm_m.reset_index()\nrfm_f = retail.groupby('CustomerID')['InvoiceNo'].count()\nrfm_f = rfm_f.reset_index()\nrfm_f.columns = ['CustomerID', 'Frequency']\n\nrfm = pd.merge(rfm_m, rfm_f, on='CustomerID', how='inner')\n\nretail['InvoiceDate'] = pd.to_datetime(retail['InvoiceDate'],format='%d-%m-%Y %H:%M')\n\nmax_date = max(retail['InvoiceDate'])\nretail['Diff'] = max_date - retail['InvoiceDate']\nrfm_p = retail.groupby('CustomerID')['Diff'].min()\nrfm_p = rfm_p.reset_index()\nrfm_p['Diff'] = rfm_p['Diff'].dt.days\nrfm = pd.merge(rfm, rfm_p, on='CustomerID', how='inner')\nrfm.columns = ['CustomerID', 'Amount', 'Frequency', 'Recency']\n#here you go\nout_data = table_from_frame(rfm)", 'filename': None}, {'name': 'warehouse2', 'script': "\nfrom Orange.data.pandas_compat import table_from_frame,table_to_frame\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom itertools import combinations \nfrom sklearn.cluster import KMeans\nimport folium\n\ndata= table_to_frame(in_data)\n# Color options\ncolor_options = {'demand': 'red',\n                 'supply': 'yellow',\n                 'flow': 'black',\n                 'cog': 'blue',\n                 'candidate': 'black',\n                 'other': 'gray'}\n\ndef fun1(x):\n    if x == 'Supply':\n        return 1.0\n    elif x == 'Demand':\n        return 2.0\n    else:\n        return 0\n \ndata['a1'] = data['type'].apply(fun1).astype(np.int64)\ndata['a2'] = data['volume'].astype(np.int64)\n \ndata['cal_vol'] = data['a1']*data['a2']\ndata=data.drop(['a1','a2'], axis=1)\n\ncands = data.loc[data['type'].str.lower()=='candidate']\nlocs = data.loc[data['cal_vol']&gt;0]\n\nprint(cands)\n#print(locs)\nout_data = table_from_frame(data)", 'filename': None}], 'scriptText': "from Orange.data.pandas_compat import table_from_frame,table_to_frame\ndf= table_to_frame(in_data)\n#df = df.drop_duplicates(keep='first')\n#df['week'] = df['date'].dt.isocalendar().week\ndf['month'] = df['date'].dt.month\ndf['total'] = df['price']*df['qty']\n#here you go\nout_data = table_from_frame(df)", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x02\r\x00\x00\x00k\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="6" format="pickle">gASVqQMAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNzYXZl
+ZFdpZGdldEdlb21ldHJ5lENCAdnQywADAAAAAAAAAAAAAAAABZ8AAAODAAAAAAAAAAAAAAWfAAAD
+gwAAAAAABAAABaAAAAAAAAAAAAAABZ8AAAODlIwRc2VsX2FnZ19mdW5jdGlvbnOUj5QojBtPcmFu
+Z2Uud2lkZ2V0cy5kYXRhLm93cGl2b3SUjBhBZ2dyZWdhdGlvbkZ1bmN0aW9uc0VudW2Uk5RLAoWU
+UpSQjAlzZWxlY3Rpb26Uj5SMC19fdmVyc2lvbl9flEsBjBBjb250ZXh0X3NldHRpbmdzlF2UKIwV
+b3Jhbmdld2lkZ2V0LnNldHRpbmdzlIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwLY29s
+X2ZlYXR1cmWUjAVtb250aJRLZYaUjAtyb3dfZmVhdHVyZZSMCnNhbGVwZXJzb26US2WGlIwLdmFs
+X2ZlYXR1cmWUjANxdHmUS2aGlGgOSwF1jAphdHRyaWJ1dGVzlH2UKIwHdHJhbl9pZJRLAowHY3Vz
+dF9pZJRLAowKcHJvZHVjdF9pZJRLAYwDcXR5lEsCjAVwcmljZZRLAowIbG9jYXRpb26USwGMBGRh
+dGWUSwSMCnNhbGVwZXJzb26USwGMBW1vbnRolEsBjAV0b3RhbJRLAnWMBW1ldGFzlH2UdWJoEymB
+lH2UKGgWfZQojAtjb2xfZmVhdHVyZZSMCGxvY2F0aW9ulEtlhpSMC3Jvd19mZWF0dXJllGgrS2WG
+lIwLdmFsX2ZlYXR1cmWUjAd0cmFuX2lklEtmhpRoDksBdWghfZQojAd0cmFuX2lklEsCjAdjdXN0
+X2lklEsCjApwcm9kdWN0X2lklEsBjANxdHmUSwKMBXByaWNllEsCjAhsb2NhdGlvbpRLAYwEZGF0
+ZZRLBGgrSwFoLEsCdWgtfZR1YmgTKYGUfZQoaBZ9lChoMmhAS2WGlGg1aCtLZoaUaDdoO0tmhpRo
+DksBdWghfZQoaDtLAmg8SwJoPUsBaD5LAmg/SwJoQEsBaEFLBGgrSwJoLEsCdWgtfZR1YmgTKYGU
+fZQoaBZ9lChoMmhAS2WGlGg1jAR3ZWVrlEtmhpRoN2gsS2aGlGgOSwF1aCF9lChoO0sCaDxLAmg9
+SwFoPksCaD9LAmhASwFoQUsEaE9LAmgsSwJ1aC19lHViZXUu
+</properties>
+		<properties node_id="7" format="pickle">gASVagMAAAAAAAB9lCiMB2NvbXBhcmWUSwKMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNvcmRlcl9i
+eV9pbXBvcnRhbmNllImMHG9yZGVyX2dyb3VwaW5nX2J5X2ltcG9ydGFuY2WUiYwTc2F2ZWRXaWRn
+ZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAAAAAAAAAAAAWfAAADgwAAAAAAAAAAAAAFnwAAA4MAAAAA
+AAQAAAWgAAAAAAAAAAAAAAWfAAADg5SMEHNob3dfYW5ub3RhdGlvbnOUiIwLc2hvd19sYWJlbHOU
+iIwNc2lnX3RocmVzaG9sZJRHP6mZmZmZmZqMCnNvcnRfZnJlcXOUiYwIc3RhdHRlc3SUSwCMCXN0
+cmV0Y2hlZJSJjAtfX3ZlcnNpb25fX5RLAYwQY29udGV4dF9zZXR0aW5nc5RdlCiMFW9yYW5nZXdp
+ZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMCWF0dHJpYnV0ZZSM
+BXRvdGFslEtmhpSMCWdyb3VwX3ZhcpSMBW1vbnRolEtlhpSMCXNlbGVjdGlvbpQpSv7///+GlGgN
+SwF1jAphdHRyaWJ1dGVzlH2UKIwHdHJhbl9pZJRLAowHY3VzdF9pZJRLAowKcHJvZHVjdF9pZJRL
+AYwDcXR5lEsCjAVwcmljZZRLAowIbG9jYXRpb26USwGMBGRhdGWUSwSMCnNhbGVwZXJzb26USwGM
+BW1vbnRolEsBjAV0b3RhbJRLAnWMBW1ldGFzlH2UdWJoEimBlH2UKGgVfZQojAlhdHRyaWJ1dGWU
+jAVwcmljZZRLZoaUjAlncm91cF92YXKUjAhsb2NhdGlvbpRLZYaUjAlzZWxlY3Rpb26UKUr+////
+hpRoDUsBdWgffZQojAd0cmFuX2lklEsCjAdjdXN0X2lklEsCjApwcm9kdWN0X2lklEsBjANxdHmU
+SwKMBXByaWNllEsCjAhsb2NhdGlvbpRLAYwEZGF0ZZRLBGgpSwFoKksCdWgrfZR1YmgSKYGUfZQo
+aBV9lChoMGgpS2aGlGgzaD5LZYaUaDYpSv7///+GlGgNSwF1aB99lChoOUsCaDpLAmg7SwFoPEsC
+aD1LAmg+SwFoP0sEaClLAmgqSwJ1aCt9lHViZXUu
+</properties>
+		<properties node_id="8" format="pickle">gASVTQUAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNzYXZlZFdpZGdldEdlb21ldHJ5
+lENCAdnQywADAAAAAAE2AAAAeQAAA8kAAAKpAAABNgAAAJUAAAPJAAACqQAAAAAAAAAABQAAAAE2
+AAAAlQAAA8kAAAKplIwLX192ZXJzaW9uX1+USwKMEGNvbnRleHRfc2V0dGluZ3OUXZQojBVvcmFu
+Z2V3aWRnZXQuc2V0dGluZ3OUjAdDb250ZXh0lJOUKYGUfZQojAZ2YWx1ZXOUfZQojBRfZG9tYWlu
+X2NoYW5nZV9zdG9yZZR9lCiMBFJlYWyUKIwHQ2x1c3RlcpRLAIwBZpSGlCmJdJSGlF2UKIwNQXND
+YXRlZ29yaWNhbJQphpSMEUNhdGVnb3JpZXNNYXBwaW5nlF2UKIwDMC4wlIwCZzGUhpSMAzEuMJSM
+AmcylIaUjAMyLjCUjAJnM5SGlIwDMy4wlIwCZzSUhpSMAzQuMJSMAmc1lIaUZYWUhpRljAtDYXRl
+Z29yaWNhbJQojAhsb2NhdGlvbpQojANCS0uUjAdCYW5na29rlIwGUEhVS0VUlIwGUGh1a2V0lIwD
+YmtrlHSUKYl0lIaUXZSMEUNhdGVnb3JpZXNNYXBwaW5nlF2UKGgujANia2uUhpRoL4wDYmtrlIaU
+aDCMBnBodWtldJSGlGgxjAZwaHVrZXSUhpRoMowDYmtrlIaUZYWUhpRhjARSZWFslCiMBW1vbnRo
+lEsAaBKGlCmJdJSGlF2UjA1Bc0NhdGVnb3JpY2FslCmGlGF1Sv7///+GlIwWX21lcmdlX2RpYWxv
+Z19zZXR0aW5nc5R9lEr8////hpSMDl9zZWxlY3RlZF9pdGVtlIwIbG9jYXRpb26USwCGlEr+////
+hpSMEW91dHB1dF90YWJsZV9uYW1llIwAlEr+////hpRoBEsCdYwKYXR0cmlidXRlc5R9lCiMB3Ry
+YW5faWSUSwKMB2N1c3RfaWSUSwKMCnByb2R1Y3RfaWSUSwGMA3F0eZRLAowFcHJpY2WUSwKMCGxv
+Y2F0aW9ulEsBjARkYXRllEsEjApzYWxlcGVyc29ulEsBaEZLAowFdG90YWyUSwJ1jAVtZXRhc5R9
+lHViaAkpgZR9lChoDH2UKGgOfZQoaBVdlChoGGgZXZQoaB1oIGgjaCZoKWWFlIaUZWg1XZRoN12U
+KGg6aDxoPmhAaEJlhZSGlGFoSV2UaExhdUr+////hpRoTn2USvz///+GlGhRaEZLAoaUSv7///+G
+lGhVaFZK/v///4aUaARLAnVoWH2UKIwHdHJhbl9pZJRLAowHY3VzdF9pZJRLAowKcHJvZHVjdF9p
+ZJRLAYwDcXR5lEsCjAVwcmljZZRLAowIbG9jYXRpb26USwGMBGRhdGWUSwRoRksCaGJLAnVoY32U
+dWJoCSmBlH2UKGgMfZQojBRfZG9tYWluX2NoYW5nZV9zdG9yZZR9lChoFV2UKGgYaBldlChoHWgg
+aCNoJmgpZYWUhpRlaDVdlGg3XZQoaDpoPGg+aEBoQmWFlIaUYXVK/v///4aUjBZfbWVyZ2VfZGlh
+bG9nX3NldHRpbmdzlH2USvz///+GlIwOX3NlbGVjdGVkX2l0ZW2UjARkYXRllEsDhpRK/v///4aU
+jBFvdXRwdXRfdGFibGVfbmFtZZRoVkr+////hpRoBEsCdWhYfZQojAd0cmFuX2lklEsCjAdjdXN0
+X2lklEsCjApwcm9kdWN0X2lklEsBjANxdHmUSwKMBXByaWNllEsCaC1LAWiTSwR1aGN9lHViZXUu
+</properties>
+		<properties node_id="9" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00~\x00\x00\x00\xf0\x00\x00\x06W\x00\x00\x03/\x00\x00\x00~\x00\x00\x01\x0c\x00\x00\x06W\x00\x00\x03/\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x00~\x00\x00\x01\x0c\x00\x00\x06W\x00\x00\x03/', 'select_rows': True, 'selected_cols': [], 'selected_rows': [], 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+		<properties node_id="10" format="literal">{'attr1': 'x', 'attr2': 'y', 'autocommit': True, 'brushRadius': 23, 'controlAreaVisible': True, 'data': [[0.17526423807080554, 0.19409298085688242, 0.0], [0.31133401744484357, 0.5032543299908843, 0.0], [0.4343201641867625, 0.6613217866909754, 0.0], [0.6253412006157004, 0.7287329079307201, 0.0], [0.7823447922011288, 0.6961896080218779, 0.0], [0.8817804002052335, 0.7891704649042844, 0.0], [0.834679322729605, 0.4939562443026436, 0.0], [0.8660800410466907, 0.2777757520510483, 0.0], [0.9838327347357619, 0.5009298085688241, 0.0], [0.18049769112365316, 0.359134001823154, 0.0], [0.09414571575166754, 0.1964175022789426, 0.0], [0.2799332991277579, 0.42422060164083863, 0.0]], 'density': 85, 'hasAttr2': True, 'labels': ['C1', 'C2'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01&lt;\x00\x00\x00y\x00\x00\x03\xe4\x00\x00\x02\x9b\x00\x00\x01&lt;\x00\x00\x00\x95\x00\x00\x03\xe4\x00\x00\x02\x9b\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x01&lt;\x00\x00\x00\x95\x00\x00\x03\xe4\x00\x00\x02\x9b', 'symbol_size': 17, 'table_name': 'Painted data', '__version__': 1}</properties>
+		<properties node_id="11" format="pickle">gASVkAEAAAAAAAB9lCiMCmF1dG9fYXBwbHmUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMEmVycm9y
+X2JhcnNfZW5hYmxlZJSJjA1maXRfaW50ZXJjZXB0lIiMDGxlYXJuZXJfbmFtZZSMFVBvbHlub21p
+YWwgUmVncmVzc2lvbpSME3BvbHlub21pYWxleHBhbnNpb26USwqME3NhdmVkV2lkZ2V0R2VvbWV0
+cnmUQ0IB2dDLAAMAAAAAAakAAAAxAAAE/gAAAk8AAAGpAAAATQAABQMAAAJPAAAAAAIAAAAFoAAA
+AakAAABNAAAE/gAAAk+UjAtfX3ZlcnNpb25fX5RLAYwQY29udGV4dF9zZXR0aW5nc5RdlIwVb3Jh
+bmdld2lkZ2V0LnNldHRpbmdzlIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwFeF92YXKU
+jAF4lEtmhpSMBXlfdmFylIwBeZRLZoaUaApLAXWMCmF0dHJpYnV0ZXOUfZQoaBVLAmgYSwJ1jAVt
+ZXRhc5R9lHViYXUu
+</properties>
+		<properties node_id="12" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'dist_color_RGB': (220, 220, 220, 255), 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x00\x05\x9f\x00\x00\x03L\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03L\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x00\x00\x00\x00\x005\x00\x00\x05\x9f\x00\x00\x03L', 'select_rows': True, 'selected_cols': [], 'selected_rows': [], 'show_attribute_labels': True, 'show_distributions': False, '__version__': 2}</properties>
+		<properties node_id="13" format="literal">{'attr1': 'x', 'attr2': 'y', 'autocommit': True, 'brushRadius': 23, 'controlAreaVisible': True, 'data': [[0.29825038481272453, 0.3963263445761167, 0.0], [0.6096408414571576, 0.6589972652689152, 0.0], [0.8215956900974859, 0.5590428441203281, 0.0]], 'density': 85, 'hasAttr2': True, 'labels': ['C1', 'C2'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\x14\x00\x00\x00\xab\x00\x00\x02\xbc\x00\x00\x02\xcd\x00\x00\x00\x14\x00\x00\x00\xc7\x00\x00\x02\xbc\x00\x00\x02\xcd\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x00\x14\x00\x00\x00\xc7\x00\x00\x02\xbc\x00\x00\x02\xcd', 'symbol_size': 17, 'table_name': 'Painted data', '__version__': 1}</properties>
+		<properties node_id="14" format="pickle">gASViAIAAAAAAAB9lCiMFGNvbXBhcmlzb25fY3JpdGVyaW9ulEsAjBJjb250cm9sQXJlYVZpc2li
+bGWUiIwNY3Zfc3RyYXRpZmllZJSIjAduX2ZvbGRzlEsDjAluX3JlcGVhdHOUSwOMCnJlc2FtcGxp
+bmeUSwWMBHJvcGWURz+5mZmZmZmajAtzYW1wbGVfc2l6ZZRLBIwTc2F2ZWRXaWRnZXRHZW9tZXRy
+eZRDQgHZ0MsAAwAAAAAAAAAAAAAAAAWfAAADgwAAAAAAAAAAAAAFnwAAA4MAAAAAAAQAAAWgAAAA
+AAAAAAAAAAWfAAADg5SMEnNodWZmbGVfc3RyYXRpZmllZJSIjAh1c2Vfcm9wZZSJjAtzY29yZV90
+YWJsZZR9lIwMc2hvd25fc2NvcmVzlI+UKIwGUmVjYWxslIwDTUFFlIwCQ0GUjAJSMpSMCVByZWNp
+c2lvbpSMA0FVQ5SMB0MtSW5kZXiUjAJGMZSMBFJNU0WUjANNU0WUkHOMC19fdmVyc2lvbl9flEsD
+jBBjb250ZXh0X3NldHRpbmdzlF2UjBVvcmFuZ2V3aWRnZXQuc2V0dGluZ3OUjAdDb250ZXh0lJOU
+KYGUfZQojAZ2YWx1ZXOUfZQojA9jbGFzc19zZWxlY3Rpb26UjCEoTm9uZSwgc2hvdyBhdmVyYWdl
+IG92ZXIgY2xhc3NlcymUSv////+GlIwMZm9sZF9mZWF0dXJllE5K/v///4aUjBVmb2xkX2ZlYXR1
+cmVfc2VsZWN0ZWSUiUr+////hpRoDX2UaBtLA3WMCmF0dHJpYnV0ZXOUjAF4lEsChpSFlIwFbWV0
+YXOUKYwKY2xhc3NfdmFyc5SMAXmUSwKGlIWUdWJhdS4=
+</properties>
+		<properties node_id="15" format="pickle">gASVgwEAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNpZ25v
+cmVfbmV3X2ZlYXR1cmVzlImME3NhdmVkV2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAAAAAAAA
+AAAFnwAAA4MAAAAAAAAAAAAABZ8AAAODAAAAAAAEAAAFoAAAAAAAAAAAAAAFnwAAA4OUjBJ1c2Vf
+aW5wdXRfZmVhdHVyZXOUiYwLX192ZXJzaW9uX1+USwGMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9y
+YW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMEWRvbWFp
+bl9yb2xlX2hpbnRzlH2UKIwBeJRLAoaUjAlhdHRyaWJ1dGWUSwCGlIwBeZRLAoaUjAVjbGFzc5RL
+AIaUdUr+////hpRoB0sBdYwKYXR0cmlidXRlc5R9lChoE0sCaBdLAnWMBW1ldGFzlH2UdWJhdS4=
+</properties>
+		<properties node_id="16" format="pickle">gASVgwEAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjBNpZ25v
+cmVfbmV3X2ZlYXR1cmVzlImME3NhdmVkV2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAAAAAAAA
+AAAFnwAAA4MAAAAAAAAAAAAABZ8AAAODAAAAAAAEAAAFoAAAAAAAAAAAAAAFnwAAA4OUjBJ1c2Vf
+aW5wdXRfZmVhdHVyZXOUiYwLX192ZXJzaW9uX1+USwGMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9y
+YW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMEWRvbWFp
+bl9yb2xlX2hpbnRzlH2UKIwBeJRLAoaUjAlhdHRyaWJ1dGWUSwCGlIwBeZRLAoaUjAVjbGFzc5RL
+AIaUdUr+////hpRoB0sBdYwKYXR0cmlidXRlc5R9lChoE0sCaBdLAnWMBW1ldGFzlH2UdWJhdS4=
+</properties>
+		<properties node_id="17" format="literal">{'alpha_index': 0, 'auto_apply': True, 'autosend': True, 'controlAreaVisible': True, 'fit_intercept': True, 'l2_ratio': 0.01, 'learner_name': '', 'reg_type': 2, 'ridge': False, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00\xf9\x00\x00\x00K\x00\x00\x02t\x00\x00\x01\xf7\x00\x00\x01\xb8\x00\x00\x00\xc8\x00\x00\x033\x00\x00\x02X\x00\x00\x00\x00\x02\x00\x00\x00\x05\xa0\x00\x00\x00\xf9\x00\x00\x00g\x00\x00\x02t\x00\x00\x01\xf7', '__version__': 1}</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>

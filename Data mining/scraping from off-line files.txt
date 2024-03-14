@@ -1,0 +1,46 @@
+#scraping from off-line serie of files
+from Orange.data.pandas_compat import table_from_frame,table_to_frame
+import pandas as pd
+import Orange.data
+import os
+import time
+import email
+from xml.etree.ElementTree import Comment
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+#browser = webdriver.Chrome(ChromeDriverManager().install())
+#2 list
+list1 = []
+ 
+path = '/Users/mac/Desktop/pages/'
+files = os.listdir(path)
+count = 1
+for file in files:
+    if file.endswith(".html"):
+        #create person dict
+        id = file.split('.')[0]
+        fileName = path+file
+        with open(fileName,'rb') as fp:
+            print('working on ' + fileName)
+            soup    = BeautifulSoup(fp.read(),'html.parser' )
+            
+            #get name
+            tag_table   = soup.find('table',{'class':'table table-info'})
+            trs      = tag_table.find_all('tr')
+            for tr in trs:
+                td1 = tr.find('td',{'class':'text-left'})
+                td2 = tr.find_all('td',{'class':'text-right'})
+                if td1 is not None:
+                    name    = td1.get_text()
+                    share   = float(td2[0].get_text().replace(',',''))
+                    share_p = float(td2[1].get_text().replace('%',''))
+                    stock = {"bank":id,"investor":name, "share":share, "share_percent":share_p}
+                    list1.append(stock)
+             
+
+df=pd.DataFrame(list1)
+
+out_data = table_from_frame(df)

@@ -1,0 +1,48 @@
+Data Mining in Operation Research/Management (Resource Scheduling)
+
+
+
+1. Manufacture two Cake (A,B) for 30 days
+
+2. Resource allocation per day
+one oven
+two bakers
+one packer
+equipment/human     Cake A      Cake B
+Oven                 0.5          1
+Bakers	             1            2.5
+Packers              1            2
+
+3. Profit
+                    Cake A      Cake B
+profit               20           40
+
+Profit = 20*A + 40*B
+
+4. Constraints
+A >= 0
+B >= 0
+
+0.5*A + 1*B <=30
+1*A + 2.5*B <=30*2
+1*A + 2*B   <=22
+
+Modeling Problem
+from pulp import *
+1. init model
+LpProblem(name='name1',sense=LpMaximize)
+2. define Decision variable
+
+A = LpVariable('A',lowBound=0, cat='Integer')
+B = LpVariable('B',lowBound=0, cat= 'Integer')
+
+3. define Objective function
+model += 20*A + 40*B
+4. define the constriants
+model += 0.5*A + 1*B <= 30
+model += 1*A + 2.5*B <=30*2
+model += 1*A + 2*B   <=22
+5. solve the model
+model.slove()
+print('Product {} A'.format(A.varValue))
+print('Product {} B'.format(B.varValue))
